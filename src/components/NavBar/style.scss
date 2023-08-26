@@ -1,12 +1,11 @@
 .sidebar {
     display: flex;
-    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 90px;
     background-color: #000;
     width: 120px;
-    height: 100%;
     z-index: -1;
 }
 
@@ -14,7 +13,7 @@
     color: #fff;
     font-size: 12px;
     font-weight: 500;
-    position: absolute;
+    position: fixed;
     bottom: 120px;
     left: -5px;
     // right: 20px;

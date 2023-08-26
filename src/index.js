@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './index.css';
 import Home from './pages/Home';
-import Header from './components/Header';
-import NavBar from './components/NavBar';
+import Error from './pages/Error';
 import reportWebVitals from './reportWebVitals';
+import Layout from './components/Layout';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Header />
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
-    </Router>
-    <Home />
+    <Layout>
+      <Router>
+        <Routes>
+          <Route path='/:id' element={<Home />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </Router>
+    </Layout>
   </React.StrictMode>
 );
 
