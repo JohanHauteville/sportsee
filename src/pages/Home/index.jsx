@@ -1,24 +1,39 @@
 import './style.scss';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { useFetch } from '../../utils/hooks';
-import { DataProvider } from '../../utils/context';
+import UserHeader from '../../components/UserHeader';
+import { useState, useEffect } from 'react';
+import { getUserDataInformation } from '../../services';
+
 
 
 
 
 function Home() {
-  const { data, isLoading, error } = useFetch("http://localhost:3000/user/12")
-  const { id } = useParams()
-  console.log(`Utilisateur : ${id}`)
-  console.log(data)
 
+  const { id } = useParams()
+  // console.log("juste après le fetch")
+  const [userDataInformation, setUserDataInformation] = useState([])
+
+
+  useEffect(() => {
+    async function fetchAllData() {
+      try {
+        const userData = await getUserDataInformation(id)
+        setUserDataInformation(userData)
+        // console.log("userData: ");
+        // console.log(userData)
+      } catch (error) {
+        console.log("Erreur: ", error)
+      }
+    }
+    fetchAllData()
+  }, [id])
 
   return (
-    <DataProvider id={id}>
-      <p>Home</p>
-    </DataProvider>
-
+    <main className='home-page'>
+      {userDataInformation && userDataInformation.data &&
+        (<UserHeader userData={userDataInformation} userFirstName={userDataInformation.data.userInfos.firstName} />)}
+    </main>
   );
 }
 
