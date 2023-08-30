@@ -10,7 +10,7 @@ import Layout from './components/Layout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Layout>
       <Router>
         <Routes>
@@ -19,7 +19,7 @@ root.render(
         </Routes>
       </Router>
     </Layout>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
