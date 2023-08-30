@@ -1,3 +1,13 @@
 .home-page {
   padding: 30px 90px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.section-info-cards {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-around;
 }

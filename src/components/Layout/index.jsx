@@ -8,9 +8,9 @@ function Layout({ children }) {
             <Header />
             <div className="nav-main">
                 <NavBar />
-                <main>
-                    {children}
-                </main>
+
+                {children}
+
             </div>
         </>
     )

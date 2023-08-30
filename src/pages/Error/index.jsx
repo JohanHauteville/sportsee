@@ -1,7 +1,12 @@
 
 
 function Error() {
-    return (<h2>Erreur 404</h2>)
+    return (
+        <main className="error-page">
+            <h2>Erreur 404</h2>
+        </main>
+
+    )
 
 
     // <p>Page introuvable</p>

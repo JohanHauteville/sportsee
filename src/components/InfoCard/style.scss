@@ -1,0 +1,52 @@
+.info-card {
+    height: 125px;
+    display: flex;
+    align-items: center;
+    background-color: #FBFBFB;
+    border-radius: 10px;
+    padding: 0 32px;
+
+    &__img {
+        height: 18px;
+        padding: 20px;
+        border-radius: 5px;
+
+        &--calories {
+            background-color: #ff00001A;
+        }
+
+        &--proteines {
+            background-color: #4AB8FF1A;
+        }
+
+        &--glucides {
+            background-color: #F9CE231A;
+        }
+
+        &--lipides {
+            background-color: #FD51811A;
+        }
+    }
+
+    &__text {
+        padding-left: 4%;
+
+        h4,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #74798C;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+}
