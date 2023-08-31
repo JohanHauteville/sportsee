@@ -5,9 +5,17 @@
   flex-direction: column;
 }
 
+.section-principal {
+  display: flex;
+
+  .recharts-responsive-container {
+    flex: 1;
+  }
+}
+
 .section-info-cards {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: .5;
   justify-content: space-around;
 }
