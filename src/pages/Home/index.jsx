@@ -66,13 +66,14 @@ function Home() {
           {userDataActivity.userId &&
             <SimpleBarChart data={userDataActivity.sessions} />}
 
-          {userDataAverageSessions &&
+          {userDataAverageSessions && userDataPerformance &&
             <div className='section-horizontal-graphs'>
               <SimpleLineChart data={userDataAverageSessions.sessions} />
               <SimpleRadarChart data={userDataPerformance.performances} />
-              <SimplePieChart />
+              <SimplePieChart data={userDataInformation} />
             </div>
           }
+          {/* {console.log(userDataInformation)} */}
 
 
         </section>
