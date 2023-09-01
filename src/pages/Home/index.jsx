@@ -6,6 +6,7 @@ import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions
 import InfoCard from '../../components/InfoCard';
 import SimpleBarChart from '../../components/SimpleBarChart';
 import SimpleLineChart from '../../components/SimpleLineChart'
+import SimpleRadarChart from '../../components/SimpleRadarChart';
 
 
 
@@ -59,20 +60,14 @@ function Home() {
         <section className='section-graph'>
           {userDataActivity.userId &&
             <SimpleBarChart data={userDataActivity.sessions} />}
-          {console.log(userDataAverageSessions)}
 
           {userDataAverageSessions &&
             <div className='section-horizontal-graphs'>
               <SimpleLineChart data={userDataAverageSessions.sessions} />
-              <SimpleLineChart />
+              <SimpleRadarChart />
               <SimpleLineChart />
             </div>
           }
-          {/* <div className='section-horizontal-graphs'>
-            <SimpleLineChart />
-            <SimpleLineChart />
-            <SimpleLineChart />
-          </div> */}
 
 
         </section>

@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
-export default class Example extends PureComponent {
+export default class SimpleLineChart extends PureComponent {
     render() {
         return (
             <article className='area-chart-article'>
@@ -46,9 +46,7 @@ export default class Example extends PureComponent {
 
                         </text>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
-                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} >
-                            {/* <Label value="Pages of my website" offset={100} position="insideBottom" viewBox={{ x: '10', y: '10', width: '80', height: '80' }} /> */}
-                        </XAxis>
+                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} />
                         <YAxis hide={true} domain={['dataMin-20', 'dataMax + 20']} />
                         <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="black" strokeOpacity={0.3} />
                         <Tooltip content={<CustomTooltip />} />
