@@ -2,7 +2,7 @@ import './style.scss';
 import { useParams } from 'react-router-dom'
 import UserHeader from '../../components/UserHeader';
 import { useState, useEffect } from 'react';
-import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions } from '../../services';
+import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions, getUserDataPerformance } from '../../services';
 import InfoCard from '../../components/InfoCard';
 import SimpleBarChart from '../../components/SimpleBarChart';
 import SimpleLineChart from '../../components/SimpleLineChart'
@@ -25,6 +25,7 @@ function Home() {
   const [userDataInformation, setUserDataInformation] = useState({})
   const [userDataActivity, setUserDataActivity] = useState({})
   const [userDataAverageSessions, setUserDataAverageSessions] = useState({})
+  const [userDataPerformance, setUserDataPerfomance] = useState({})
 
 
   useEffect(() => {
@@ -38,6 +39,9 @@ function Home() {
 
         const { userDataAverageSessionsFetched } = await getUserDataAverageSessions(id)
         setUserDataAverageSessions(userDataAverageSessionsFetched)
+
+        const { userDataPerformanceFetched } = await getUserDataPerformance(id)
+        setUserDataPerfomance(userDataPerformanceFetched)
 
         console.log("UseEffect get userDataActivity");
         // console.log(userDataInfo)
@@ -64,7 +68,7 @@ function Home() {
           {userDataAverageSessions &&
             <div className='section-horizontal-graphs'>
               <SimpleLineChart data={userDataAverageSessions.sessions} />
-              <SimpleRadarChart />
+              <SimpleRadarChart data={userDataPerformance.performances} />
               <SimpleLineChart />
             </div>
           }

@@ -104,5 +104,32 @@ export const getUserDataAverageSessions = async (id) => {
     }
 }
 
+// const days = ["L", "M", "M", "J", "V", "S", "D"]
 
+export const getUserDataPerformance = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/user/${id}/performance`);
+        if (!response.ok) {
+            throw new Error('Erreur de réseau ou de requête');
+        }
+        const data = await response.json();
+
+        const formattedSessions = data.data.data.map((dataPerf) => ({
+            ...dataPerf,
+            kind: data.data.kind[dataPerf.kind]
+        }))
+
+        const userDataPerformanceFetched = {
+            userId: data.data.userId,
+            performances: formattedSessions
+        }
+
+        console.log(userDataPerformanceFetched);
+
+        return { userDataPerformanceFetched }
+    } catch (error) {
+        console.error('Erreur:', error);
+        throw error;
+    }
+}
 

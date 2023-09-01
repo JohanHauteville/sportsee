@@ -35,7 +35,7 @@ export default class SimpleRadarChart extends PureComponent {
     return (
       <article className='radar-chart-article'>
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data} margin={{ top: 0, right: 30, bottom: 0, left: 30 }} startAngle={30} endAngle={-330}>
+          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={this.props.data} margin={{ top: 0, right: 30, bottom: 0, left: 30 }} startAngle={30} endAngle={-330}>
             <PolarGrid radialLines={false} />
             {/* <PolarGrid radialLines={false} polarRadius={[0, 10, 27, 49, 72, 95]} /> */}
             <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 12 }} />
