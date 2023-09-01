@@ -104,8 +104,6 @@ export const getUserDataAverageSessions = async (id) => {
     }
 }
 
-// const days = ["L", "M", "M", "J", "V", "S", "D"]
-
 export const getUserDataPerformance = async (id) => {
     try {
         const response = await fetch(`http://localhost:3000/user/${id}/performance`);
@@ -123,8 +121,6 @@ export const getUserDataPerformance = async (id) => {
             userId: data.data.userId,
             performances: formattedSessions
         }
-
-        console.log(userDataPerformanceFetched);
 
         return { userDataPerformanceFetched }
     } catch (error) {

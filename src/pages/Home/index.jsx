@@ -7,6 +7,7 @@ import InfoCard from '../../components/InfoCard';
 import SimpleBarChart from '../../components/SimpleBarChart';
 import SimpleLineChart from '../../components/SimpleLineChart'
 import SimpleRadarChart from '../../components/SimpleRadarChart';
+import SimplePieChart from '../../components/SimplePieChart';
 
 
 
@@ -69,7 +70,7 @@ function Home() {
             <div className='section-horizontal-graphs'>
               <SimpleLineChart data={userDataAverageSessions.sessions} />
               <SimpleRadarChart data={userDataPerformance.performances} />
-              <SimpleLineChart />
+              <SimplePieChart />
             </div>
           }
 

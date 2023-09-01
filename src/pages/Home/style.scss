@@ -1,5 +1,5 @@
 .home-page {
-  padding: 0 5%;
+  padding: 0 6%;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -8,7 +8,7 @@
 .section-principal {
   display: flex;
   flex: 1;
-  padding: 4% 0 5% 0;
+  padding: 5% 0 5% 0;
   gap: 30px;
 
 }
@@ -16,7 +16,7 @@
 .section-graph {
   display: flex;
   flex-direction: column;
-  flex: .7;
+  flex: .75;
   // padding: 20px 0;
   gap: 30px;
 
@@ -37,6 +37,6 @@
 .section-info-cards {
   display: flex;
   flex-direction: column;
-  flex: .3;
+  flex: .25;
   justify-content: space-between;
 }
