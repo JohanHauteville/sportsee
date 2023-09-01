@@ -54,7 +54,7 @@ export default class Example extends PureComponent {
                     <LineChart
                         width={500}
                         height={400}
-                        data={data}
+                        data={this.props.data}
                         margin={{
                             top: 10,
                             right: 0,
@@ -70,12 +70,13 @@ export default class Example extends PureComponent {
                             </linearGradient>
                         </defs>
 
-                        <text x={30} y={30} fill="#ffffff" opacity={0.5} fontWeight={500} textAnchor="left" dominantBaseline="central">
-                            <tspan fontSize="14">Durée moyenne des sessions</tspan>
+                        <text x={30} y={30} fill="#ffffff" opacity={0.5} fontWeight={500} textAnchor="left" dominantBaseline="central" >
+                            <tspan x={30} y={30} fontSize="15">Durée moyenne des</tspan>
+                            <tspan x={30} y={60} fontSize="15">sessions</tspan>
 
                         </text>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
-                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} >
+                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} padding={{ left: 20, right: 20 }} includeHidden={true} >
                             {/* <Label value="Pages of my website" offset={100} position="insideBottom" viewBox={{ x: '10', y: '10', width: '80', height: '80' }} /> */}
                         </XAxis>
                         <YAxis hide={true} domain={['dataMin-20', 'dataMax + 20']} />

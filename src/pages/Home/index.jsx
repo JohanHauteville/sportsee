@@ -2,7 +2,7 @@ import './style.scss';
 import { useParams } from 'react-router-dom'
 import UserHeader from '../../components/UserHeader';
 import { useState, useEffect } from 'react';
-import { getUserDataInformation, getUserDataActivity } from '../../services';
+import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions } from '../../services';
 import InfoCard from '../../components/InfoCard';
 import SimpleBarChart from '../../components/SimpleBarChart';
 import SimpleLineChart from '../../components/SimpleLineChart'
@@ -23,6 +23,7 @@ function Home() {
   // console.log("juste après le fetch")
   const [userDataInformation, setUserDataInformation] = useState({})
   const [userDataActivity, setUserDataActivity] = useState({})
+  const [userDataAverageSessions, setUserDataAverageSessions] = useState({})
 
 
   useEffect(() => {
@@ -34,10 +35,14 @@ function Home() {
         const { userDataActiv } = await getUserDataActivity(id)
         setUserDataActivity(userDataActiv)
 
+        const { userDataAverageSessionsFetched } = await getUserDataAverageSessions(id)
+        setUserDataAverageSessions(userDataAverageSessionsFetched)
+
         console.log("UseEffect get userDataActivity");
         // console.log(userDataInfo)
         // console.log(userDataActivity)
         // console.log(userDataActiv)
+        // console.log(userDataAverageSessions)
       } catch (error) {
         console.log("Erreur: ", error)
       }
@@ -54,11 +59,20 @@ function Home() {
         <section className='section-graph'>
           {userDataActivity.userId &&
             <SimpleBarChart data={userDataActivity.sessions} />}
-          <div className='section-horizontal-graphs'>
+          {console.log(userDataAverageSessions)}
+
+          {userDataAverageSessions &&
+            <div className='section-horizontal-graphs'>
+              <SimpleLineChart data={userDataAverageSessions.sessions} />
+              <SimpleLineChart />
+              <SimpleLineChart />
+            </div>
+          }
+          {/* <div className='section-horizontal-graphs'>
             <SimpleLineChart />
             <SimpleLineChart />
             <SimpleLineChart />
-          </div>
+          </div> */}
 
 
         </section>
