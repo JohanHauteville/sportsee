@@ -75,17 +75,28 @@ export const getUserDataAverageSessions = async (id) => {
             throw new Error('Erreur de réseau ou de requête');
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         const formattedSessions = data.data.sessions.map((session, index) => ({
             ...session,
             day: days[index]
         }))
+        console.log(formattedSessions)
+        const lastSessionIndice = (data.data.sessions.length - 1)
+        formattedSessions.unshift({
+            day: "",
+            sessionLength: data.data.sessions[0].sessionLength
+        })
+        formattedSessions.push({
+            day: "",
+            sessionLength: data.data.sessions[lastSessionIndice].sessionLength
+        })
+
 
         const userDataAverageSessionsFetched = {
             userId: data.data.userId,
             sessions: formattedSessions
         }
-        console.log(userDataAverageSessionsFetched);
+
 
         return { userDataAverageSessionsFetched }
     } catch (error) {

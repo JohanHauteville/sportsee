@@ -2,43 +2,13 @@ import React, { PureComponent } from 'react';
 import './style.scss'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceArea } from 'recharts';
 
-const data = [
-    {
-        day: "L",
-        sessionLength: 30
-    },
-    {
-        day: "M",
-        sessionLength: 23
-    },
-    {
-        day: "M",
-        sessionLength: 45
-    },
-    {
-        day: "J",
-        sessionLength: 50
-    },
-    {
-        day: "V",
-        sessionLength: 0
-    },
-    {
-        day: "S",
-        sessionLength: 0
-    },
-    {
-        day: "D",
-        sessionLength: 60
-    }
-];
+
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
             <div className="custom-tooltip--line-chart">
                 <p className="label">{`${payload[0].value} min`}</p>
-                {/* <p className="label">{`${payload[1].value}kCal`}</p> */}
             </div>
         );
     }
@@ -76,7 +46,7 @@ export default class Example extends PureComponent {
 
                         </text>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
-                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} padding={{ left: 20, right: 20 }} includeHidden={true} >
+                        <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} >
                             {/* <Label value="Pages of my website" offset={100} position="insideBottom" viewBox={{ x: '10', y: '10', width: '80', height: '80' }} /> */}
                         </XAxis>
                         <YAxis hide={true} domain={['dataMin-20', 'dataMax + 20']} />
