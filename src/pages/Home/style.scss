@@ -1,5 +1,5 @@
 .home-page {
-  padding: 30px 90px;
+  padding: 0 5%;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -7,15 +7,36 @@
 
 .section-principal {
   display: flex;
+  flex: 1;
+  padding: 4% 0 5% 0;
+  gap: 30px;
+
+}
+
+.section-graph {
+  display: flex;
+  flex-direction: column;
+  flex: .7;
+  // padding: 20px 0;
+  gap: 30px;
+
+  .section-horizontal-graphs {
+    display: flex;
+    flex: .4;
+    gap: 20px;
+  }
 
   .recharts-responsive-container {
+    position: relative;
     flex: 1;
   }
+
+
 }
 
 .section-info-cards {
   display: flex;
   flex-direction: column;
-  flex: .5;
-  justify-content: space-around;
+  flex: .3;
+  justify-content: space-between;
 }

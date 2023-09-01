@@ -1,9 +1,21 @@
-.custom-tooltip {
+.custom-tooltip--bar-chart {
     background-color: #FF0101;
     color: #fff;
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 8px;
     font-weight: 500;
     line-height: 24px;
     text-align: center;
+}
+
+.bar-chart-section {
+    // padding-left: 30px;
+    // padding-right: 30px;
+}
+
+.bar-chart-article {
+    flex: 1;
+    background-color: #00000005;
+    height: 100%;
+    border-radius: 10px;
 }

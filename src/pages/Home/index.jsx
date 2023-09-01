@@ -4,8 +4,8 @@ import UserHeader from '../../components/UserHeader';
 import { useState, useEffect } from 'react';
 import { getUserDataInformation, getUserDataActivity } from '../../services';
 import InfoCard from '../../components/InfoCard';
-import SimpleAreaChart from '../../components/SimpleAreaChart';
 import SimpleBarChart from '../../components/SimpleBarChart';
+import SimpleLineChart from '../../components/SimpleLineChart'
 
 
 
@@ -49,17 +49,28 @@ function Home() {
     <main className='home-page'>
       {userDataInformation.userInfos &&
         (<UserHeader userData={userDataInformation} />)}
+
       <section className="section-principal">
-        {userDataActivity.userId &&
-          <SimpleBarChart />}
+        <section className='section-graph'>
+          {userDataActivity.userId &&
+            <SimpleBarChart data={userDataActivity.sessions} />}
+          <div className='section-horizontal-graphs'>
+            <SimpleLineChart />
+            <SimpleLineChart />
+            <SimpleLineChart />
+          </div>
+
+
+        </section>
+
 
         {userDataInformation.keyData && (
-          <section className='section-info-cards'>
+          <aside className='section-info-cards'>
             <InfoCard icon={caloriesIcon} title="Calories" value={userDataInformation.keyData.calorieCount} mesureUnit="kCal" />
             <InfoCard icon={proteinesIcon} title="Proteines" value={userDataInformation.keyData.proteinCount} mesureUnit="g" />
             <InfoCard icon={glucidesIcon} title="Glucides" value={userDataInformation.keyData.carbohydrateCount} mesureUnit="g" />
             <InfoCard icon={lipidesIcon} title="Lipides" value={userDataInformation.keyData.lipidCount} mesureUnit="g" />
-          </section>
+          </aside>
         )}
       </section>
 
