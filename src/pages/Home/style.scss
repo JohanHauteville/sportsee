@@ -3,13 +3,21 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+
+  @media (max-width: 1100px) {
+    padding: 0 2%;
+  }
 }
 
 .section-principal {
   display: flex;
   flex: 1;
-  padding: 5% 0 5% 0;
+  padding: 8% 0 8% 0;
   gap: 30px;
+
+  @media (max-height: 800px) {
+    padding: 2% 0 6% 0;
+  }
 
 }
 
@@ -22,8 +30,9 @@
 
   .section-horizontal-graphs {
     display: flex;
-    flex: .4;
-    gap: 20px;
+    // flex: .3;
+    height: 45%;
+    gap: 30px;
   }
 
   .recharts-responsive-container {
@@ -40,3 +49,5 @@
   flex: .25;
   justify-content: space-between;
 }
+
+@media (min-width: 680px) {}

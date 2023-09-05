@@ -51,12 +51,17 @@ export default class SimpleBarChart extends PureComponent {
                         <text x={30} y={40} fill="#20253A" fontWeight={500} textAnchor="left" dominantBaseline="central">
                             <tspan fontSize="15">Activité quotidienne</tspan>
                         </text>
+                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="uniqueDay" axisLine={true} tickLine={false} tickMargin={20} scale='point' padding={{ top: 0, right: 15, bottom: 0, left: 15 }} tick={{ fontSize: '1vw', fontWeight: '500' }} />
+                        {/* <XAxis dataKey="uniqueDay" axisLine={true} tickLine={false} tickMargin={20} scale='point' padding={{ top: 0, right: 15, bottom: 0, left: 15 }} tick={{ fontSize: '1vw', fontWeight: '500' }} />*/}
+                        <XAxis dataKey="uniqueDay" axisLine={true} tickLine={false} tickMargin={20} tick={{ fontSize: '1vw', fontWeight: '500' }} />
+
                         <YAxis yAxisId="kilogram" orientation="right" tickCount={3} axisLine={false} tickLine={false} tickMargin={30} type="number" domain={['dataMin-0.5', 'dataMax + 0.5']} tick={{ color: '9B9EAC', fontSize: '1vw', fontWeight: '500' }} />
                         <YAxis yAxisId="calories" hide={true} orientation="left" domain={['dataMin-50', 'dataMax + 50']} />
 
+                        {/* <Tooltip /> */}
                         <Tooltip content={<CustomTooltip />} />
+
 
                         <Legend align="right" verticalAlign='top' iconSize={8} wrapperStyle={positionLegend} formatter={renderLegendText} />
                         <Bar yAxisId="kilogram" dataKey="kilogram" fill="#282D30" barSize={8} legendType="circle" name="Poids (Kg)" unit="Kg" radius={[20, 20, 0, 0]} />

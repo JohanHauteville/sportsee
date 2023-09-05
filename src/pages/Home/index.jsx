@@ -11,6 +11,7 @@ import SimplePieChart from '../../components/SimplePieChart';
 
 
 
+
 import caloriesIcon from '../../assets/icons/calories-icon.svg'
 import proteinesIcon from '../../assets/icons/proteines-icon.svg'
 import glucidesIcon from '../../assets/icons/glucides-icon.svg'
@@ -44,7 +45,7 @@ function Home() {
         const { userDataPerformanceFetched } = await getUserDataPerformance(id)
         setUserDataPerfomance(userDataPerformanceFetched)
 
-        console.log("UseEffect get userDataActivity");
+        console.log("UseEffect fetchAllData");
         // console.log(userDataInfo)
         // console.log(userDataActivity)
         // console.log(userDataActiv)
@@ -65,6 +66,7 @@ function Home() {
         <section className='section-graph'>
           {userDataActivity.userId &&
             <SimpleBarChart data={userDataActivity.sessions} />}
+
 
           {userDataAverageSessions && userDataPerformance &&
             <div className='section-horizontal-graphs'>

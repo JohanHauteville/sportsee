@@ -49,6 +49,7 @@ export default class SimpleLineChart extends PureComponent {
                         <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} />
                         <YAxis hide={true} domain={['dataMin-20', 'dataMax + 20']} />
                         <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="black" strokeOpacity={0.3} />
+                        {/* <Tooltip content={<CustomTooltip />} position={{ y: 0 }} /> */}
                         <Tooltip content={<CustomTooltip />} />
                         <Line type="natural" dot={false} dataKey="sessionLength" stroke="url(#Gradient01)" fill="#FF0000" strokeWidth={2} />
                     </LineChart>
