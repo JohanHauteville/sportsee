@@ -10,6 +10,8 @@ export default class SimplePieChart extends PureComponent {
     render() {
         return (
             <article className='pie-chart-article'>
+                {console.log("SimplePieChart")}
+
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart width={400} height={400} >
                         <text x={30} y={40} fill="#20253A" fontWeight={500} textAnchor="left" dominantBaseline="central">

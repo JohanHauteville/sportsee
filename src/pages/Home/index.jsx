@@ -28,6 +28,7 @@ function Home() {
   const [userDataActivity, setUserDataActivity] = useState({})
   const [userDataAverageSessions, setUserDataAverageSessions] = useState({})
   const [userDataPerformance, setUserDataPerfomance] = useState({})
+  const { PROD_ENV } = process.env;
 
 
   useEffect(() => {
@@ -45,11 +46,8 @@ function Home() {
         const { userDataPerformanceFetched } = await getUserDataPerformance(id)
         setUserDataPerfomance(userDataPerformanceFetched)
 
-        console.log("UseEffect fetchAllData");
-        // console.log(userDataInfo)
-        // console.log(userDataActivity)
-        // console.log(userDataActiv)
-        // console.log(userDataAverageSessions)
+        // console.log(process.env.PORT)
+
       } catch (error) {
         console.log("Erreur: ", error)
       }
@@ -60,13 +58,41 @@ function Home() {
   return (
     <main className='home-page'>
       {userDataInformation.userInfos &&
-        (<UserHeader userData={userDataInformation} />)}
+        userDataActivity.userId &&
+        userDataAverageSessions.sessions &&
+        userDataPerformance.performances &&
+        userDataInformation.keyData &&
+        (
+          <>
+            <UserHeader userData={userDataInformation} />
+            <section className="section-principal">
+              <section className='section-graph'>
+                {userDataActivity.userId &&
+                  <SimpleBarChart data={userDataActivity.sessions} />}
 
-      <section className="section-principal">
-        <section className='section-graph'>
+                {userDataAverageSessions && userDataPerformance &&
+                  <div className='section-horizontal-graphs'>
+                    <SimpleLineChart data={userDataAverageSessions.sessions} />
+                    <SimpleRadarChart data={userDataPerformance.performances} />
+                    <SimplePieChart data={userDataInformation} />
+                  </div>
+                }
+              </section>
+              <aside className='section-info-cards'>
+                <InfoCard icon={caloriesIcon} title="Calories" value={userDataInformation.keyData.calorieCount} mesureUnit="kCal" />
+                <InfoCard icon={proteinesIcon} title="Proteines" value={userDataInformation.keyData.proteinCount} mesureUnit="g" />
+                <InfoCard icon={glucidesIcon} title="Glucides" value={userDataInformation.keyData.carbohydrateCount} mesureUnit="g" />
+                <InfoCard icon={lipidesIcon} title="Lipides" value={userDataInformation.keyData.lipidCount} mesureUnit="g" />
+              </aside>
+            </section>
+          </>)}
+      {/* {userDataInformation.userInfos &&
+        (<UserHeader userData={userDataInformation} />)} */}
+
+      {/* <section className="section-principal"> */}
+      {/* <section className='section-graph'>
           {userDataActivity.userId &&
             <SimpleBarChart data={userDataActivity.sessions} />}
-
 
           {userDataAverageSessions && userDataPerformance &&
             <div className='section-horizontal-graphs'>
@@ -75,21 +101,18 @@ function Home() {
               <SimplePieChart data={userDataInformation} />
             </div>
           }
-          {/* {console.log(userDataInformation)} */}
+        </section> */}
 
 
-        </section>
-
-
-        {userDataInformation.keyData && (
+      {/* {userDataInformation.keyData && (
           <aside className='section-info-cards'>
             <InfoCard icon={caloriesIcon} title="Calories" value={userDataInformation.keyData.calorieCount} mesureUnit="kCal" />
             <InfoCard icon={proteinesIcon} title="Proteines" value={userDataInformation.keyData.proteinCount} mesureUnit="g" />
             <InfoCard icon={glucidesIcon} title="Glucides" value={userDataInformation.keyData.carbohydrateCount} mesureUnit="g" />
             <InfoCard icon={lipidesIcon} title="Lipides" value={userDataInformation.keyData.lipidCount} mesureUnit="g" />
           </aside>
-        )}
-      </section>
+        )} */}
+      {/* </section> */}
 
 
     </main>

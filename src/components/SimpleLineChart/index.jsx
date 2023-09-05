@@ -20,6 +20,7 @@ export default class SimpleLineChart extends PureComponent {
     render() {
         return (
             <article className='area-chart-article'>
+                {console.log("SimpleLineChart")}
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart
                         width={500}
