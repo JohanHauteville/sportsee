@@ -1,5 +1,5 @@
 import './style.scss';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import UserHeader from '../../components/UserHeader';
 import { useState, useEffect } from 'react';
 import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions, getUserDataPerformance } from '../../services';
@@ -23,11 +23,12 @@ import lipidesIcon from '../../assets/icons/lipides-icon.svg'
 function Home() {
 
   const { id } = useParams()
-  // console.log("juste après le fetch")
   const [userDataInformation, setUserDataInformation] = useState({})
   const [userDataActivity, setUserDataActivity] = useState({})
   const [userDataAverageSessions, setUserDataAverageSessions] = useState({})
   const [userDataPerformance, setUserDataPerfomance] = useState({})
+  const navigate = useNavigate()
+
 
 
 
@@ -47,11 +48,13 @@ function Home() {
         setUserDataPerfomance(userDataPerformanceFetched)
 
       } catch (error) {
-        console.log("Erreur: ", error)
+        console.log("Utilisateur introuvable ", error)
+        navigate("/error")
+
       }
     }
     fetchAllData()
-  }, [id])
+  }, [id, navigate])
 
   return (
     <main className='home-page'>
