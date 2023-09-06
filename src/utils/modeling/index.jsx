@@ -3,11 +3,21 @@
 
 export function modelingUserDataInformation(data) {
 
+
     // Formatage des données
     const userDataInfo = {
         ...data.data,
+        keyData: {
+            ...data.data.keyData,
+            // Formatage du nombre de calories
+            calorieCount: data.data.keyData.calorieCount.toLocaleString('en-US')
+        },
+
         todayScore: data.data.todayScore ? data.data.todayScore : data.data.score,
     }
+
+    const uSFormat = new Intl.NumberFormat('en-US')
+    console.log(uSFormat.format(data.data.keyData.calorieCount));
 
     // Suppresion de "score"
     userDataInfo && delete userDataInfo.score
