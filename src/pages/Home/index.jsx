@@ -84,35 +84,6 @@ function Home() {
               </aside>
             </section>
           </>)}
-      {/* {userDataInformation.userInfos &&
-        (<UserHeader userData={userDataInformation} />)} */}
-
-      {/* <section className="section-principal"> */}
-      {/* <section className='section-graph'>
-          {userDataActivity.userId &&
-            <SimpleBarChart data={userDataActivity.sessions} />}
-
-          {userDataAverageSessions && userDataPerformance &&
-            <div className='section-horizontal-graphs'>
-              <SimpleLineChart data={userDataAverageSessions.sessions} />
-              <SimpleRadarChart data={userDataPerformance.performances} />
-              <SimplePieChart data={userDataInformation} />
-            </div>
-          }
-        </section> */}
-
-
-      {/* {userDataInformation.keyData && (
-          <aside className='section-info-cards'>
-            <InfoCard icon={caloriesIcon} title="Calories" value={userDataInformation.keyData.calorieCount} mesureUnit="kCal" />
-            <InfoCard icon={proteinesIcon} title="Proteines" value={userDataInformation.keyData.proteinCount} mesureUnit="g" />
-            <InfoCard icon={glucidesIcon} title="Glucides" value={userDataInformation.keyData.carbohydrateCount} mesureUnit="g" />
-            <InfoCard icon={lipidesIcon} title="Lipides" value={userDataInformation.keyData.lipidCount} mesureUnit="g" />
-          </aside>
-        )} */}
-      {/* </section> */}
-
-
     </main>
   );
 }

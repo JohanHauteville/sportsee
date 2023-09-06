@@ -1,14 +1,19 @@
 // import { useFetch } from "../utils/hooks";
 import {
+    modelingUserDataInformation,
+    modelingUserDataActivity,
+    modelingUserDataAverageSessions,
+    modelingUserDataPerformance
+} from '../utils/modeling';
+
+import {
     USER_MAIN_DATA,
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE
 } from '../mock/data'
+
 const isProduction = process.env.REACT_APP_PROD_ENV === 'true';
-
-
-
 
 export const getUserDataInformation = async (id) => {
     let data;
@@ -23,19 +28,14 @@ export const getUserDataInformation = async (id) => {
             data = await response.json();
         } else {
             console.log("En Developpement...")
-
             data = {
                 data:
                     USER_MAIN_DATA.find((element) => element.id === parseInt(id, 10))
             }
         }
 
-        const userDataInfo = {
-            ...data.data,
-            todayScore: data.data.todayScore ? data.data.todayScore : data.data.score,
-        }
+        const userDataInfo = await modelingUserDataInformation(data)
 
-        userDataInfo && delete userDataInfo.score
         return { userDataInfo };
     } catch (error) {
         console.error('Erreur:', error);
@@ -59,15 +59,8 @@ export const getUserDataActivity = async (id) => {
                     USER_ACTIVITY.find((element) => element.userId === parseInt(id, 10))
             }
         }
-        const formattedSessions = data.data.sessions.map((session, index) => ({
-            ...session,
-            uniqueDay: index + 1
-        }))
 
-        const userDataActiv = {
-            userId: data.data.userId,
-            sessions: formattedSessions
-        }
+        const userDataActiv = await modelingUserDataActivity(data)
 
         return { userDataActiv }
     } catch (error) {
@@ -75,8 +68,6 @@ export const getUserDataActivity = async (id) => {
         throw error;
     }
 }
-
-const days = ["L", "M", "M", "J", "V", "S", "D"]
 
 export const getUserDataAverageSessions = async (id) => {
     let data
@@ -93,27 +84,8 @@ export const getUserDataAverageSessions = async (id) => {
                     USER_AVERAGE_SESSIONS.find((element) => element.userId === parseInt(id, 10))
             }
         }
-        const formattedSessions = data.data.sessions.map((session, index) => ({
-            ...session,
-            day: days[index]
-        }))
 
-        const lastSessionIndice = (data.data.sessions.length - 1)
-        formattedSessions.unshift({
-            day: "",
-            sessionLength: data.data.sessions[0].sessionLength
-        })
-        formattedSessions.push({
-            day: "",
-            sessionLength: data.data.sessions[lastSessionIndice].sessionLength
-        })
-
-
-        const userDataAverageSessionsFetched = {
-            userId: data.data.userId,
-            sessions: formattedSessions
-        }
-
+        const userDataAverageSessionsFetched = await modelingUserDataAverageSessions(data)
 
         return { userDataAverageSessionsFetched }
     } catch (error) {
@@ -137,15 +109,8 @@ export const getUserDataPerformance = async (id) => {
                     USER_PERFORMANCE.find((element) => element.userId === parseInt(id, 10))
             }
         }
-        const formattedSessions = data.data.data.map((dataPerf) => ({
-            ...dataPerf,
-            kind: data.data.kind[dataPerf.kind]
-        }))
 
-        const userDataPerformanceFetched = {
-            userId: data.data.userId,
-            performances: formattedSessions
-        }
+        const userDataPerformanceFetched = modelingUserDataPerformance(data)
 
         return { userDataPerformanceFetched }
     } catch (error) {
