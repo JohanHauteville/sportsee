@@ -1,15 +1,23 @@
 
+// MODELING DES DATAS
+
 export function modelingUserDataInformation(data) {
+
+    // Formatage des données
     const userDataInfo = {
         ...data.data,
         todayScore: data.data.todayScore ? data.data.todayScore : data.data.score,
     }
 
+    // Suppresion de "score"
     userDataInfo && delete userDataInfo.score
+
     return userDataInfo
 }
 
 export function modelingUserDataActivity(data) {
+
+    // Formatage des données
     const formattedSessions = data.data.sessions.map((session, index) => ({
         ...session,
         uniqueDay: index + 1
@@ -24,13 +32,17 @@ export function modelingUserDataActivity(data) {
 }
 
 export function modelingUserDataAverageSessions(data) {
+
+    // Tableau des jours de la semaines
     const days = ["L", "M", "M", "J", "V", "S", "D"]
 
+    // Formatage des jours de la semaine
     const formattedSessions = data.data.sessions.map((session, index) => ({
         ...session,
         day: days[index]
     }))
 
+    // Copie des première et dernière données permettant d'obtenir un graphique fidèle à la maquette
     const lastSessionIndice = (data.data.sessions.length - 1)
     formattedSessions.unshift({
         day: "",
@@ -40,7 +52,6 @@ export function modelingUserDataAverageSessions(data) {
         day: "",
         sessionLength: data.data.sessions[lastSessionIndice].sessionLength
     })
-
 
     const userDataAverageSessionsFetched = {
         userId: data.data.userId,
@@ -52,6 +63,7 @@ export function modelingUserDataAverageSessions(data) {
 
 export function modelingUserDataPerformance(data) {
 
+    // Tableau de traduction
     const translation = {
         cardio: 'Cardio',
         energy: 'Energie',
@@ -61,6 +73,7 @@ export function modelingUserDataPerformance(data) {
         intensity: 'Intensité'
     }
 
+    // Formatage des types de performances
     const formattedSessions = data.data.data.map((dataPerf) => ({
         ...dataPerf,
         kind: translation[data.data.kind[dataPerf.kind]]

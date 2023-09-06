@@ -1,4 +1,4 @@
-// import { useFetch } from "../utils/hooks";
+
 import {
     modelingUserDataInformation,
     modelingUserDataActivity,
@@ -13,6 +13,7 @@ import {
     USER_PERFORMANCE
 } from '../mock/data'
 
+// Permet de savoir si le site est en 'développement' ou en 'production'
 const isProduction = process.env.REACT_APP_PROD_ENV === 'true';
 
 export const getUserDataInformation = async (id) => {
@@ -34,6 +35,7 @@ export const getUserDataInformation = async (id) => {
             }
         }
 
+        // Modeling des datas
         const userDataInfo = await modelingUserDataInformation(data)
 
         return { userDataInfo };
@@ -60,6 +62,7 @@ export const getUserDataActivity = async (id) => {
             }
         }
 
+        // Modeling des datas
         const userDataActiv = await modelingUserDataActivity(data)
 
         return { userDataActiv }
@@ -85,6 +88,7 @@ export const getUserDataAverageSessions = async (id) => {
             }
         }
 
+        // Modeling des datas
         const userDataAverageSessionsFetched = await modelingUserDataAverageSessions(data)
 
         return { userDataAverageSessionsFetched }
@@ -110,6 +114,7 @@ export const getUserDataPerformance = async (id) => {
             }
         }
 
+        // Modeling des datas
         const userDataPerformanceFetched = modelingUserDataPerformance(data)
 
         return { userDataPerformanceFetched }
