@@ -28,7 +28,7 @@ function Home() {
   const [userDataActivity, setUserDataActivity] = useState({})
   const [userDataAverageSessions, setUserDataAverageSessions] = useState({})
   const [userDataPerformance, setUserDataPerfomance] = useState({})
-  const { PROD_ENV } = process.env;
+
 
 
   useEffect(() => {
@@ -45,8 +45,6 @@ function Home() {
 
         const { userDataPerformanceFetched } = await getUserDataPerformance(id)
         setUserDataPerfomance(userDataPerformanceFetched)
-
-        // console.log(process.env.PORT)
 
       } catch (error) {
         console.log("Erreur: ", error)

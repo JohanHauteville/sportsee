@@ -1,14 +1,34 @@
 // import { useFetch } from "../utils/hooks";
+import {
+    USER_MAIN_DATA,
+    USER_ACTIVITY,
+    USER_AVERAGE_SESSIONS,
+    USER_PERFORMANCE
+} from '../mock/data'
+const isProduction = process.env.REACT_APP_PROD_ENV === 'true';
+
 
 
 
 export const getUserDataInformation = async (id) => {
+    let data;
     try {
-        const response = await fetch(`http://localhost:3000/user/${id}`);
-        if (!response.ok) {
-            throw new Error('Erreur de réseau ou de requête');
+        if (isProduction) {
+            console.log("En production...")
+
+            const response = await fetch(`http://localhost:3000/user/${id}`);
+            if (!response.ok) {
+                throw new Error('Erreur de réseau ou de requête');
+            }
+            data = await response.json();
+        } else {
+            console.log("En Developpement...")
+
+            data = {
+                data:
+                    USER_MAIN_DATA.find((element) => element.id === parseInt(id, 10))
+            }
         }
-        const data = await response.json();
 
         const userDataInfo = {
             ...data.data,
@@ -16,23 +36,6 @@ export const getUserDataInformation = async (id) => {
         }
 
         userDataInfo && delete userDataInfo.score
-
-        // const scoreData = data.data.todayScore ? data.data.todayScore : data.data.score
-        // const userDataInfo = {
-        //     id: data.data.id,
-        //     todayScore: scoreData,
-        //     userInfos: {
-        //         firstName: data.data.userInfos.firstName,
-        //         lastName: data.data.userInfos.lastName,
-        //         age: data.data.userInfos.age
-        //     },
-        //     keyData: {
-        //         calorieCount: data.data.keyData.calorieCount,
-        //         proteinCount: data.data.keyData.proteinCount,
-        //         carbohydrateCount: data.data.keyData.carbohydrateCount,
-        //         lipidCount: data.data.keyData.lipidCount
-        //     }
-        // }
         return { userDataInfo };
     } catch (error) {
         console.error('Erreur:', error);
@@ -42,13 +45,20 @@ export const getUserDataInformation = async (id) => {
 }
 
 export const getUserDataActivity = async (id) => {
+    let data
     try {
-        const response = await fetch(`http://localhost:3000/user/${id}/activity`);
-        if (!response.ok) {
-            throw new Error('Erreur de réseau ou de requête');
+        if (isProduction) {
+            const response = await fetch(`http://localhost:3000/user/${id}/activity`);
+            if (!response.ok) {
+                throw new Error('Erreur de réseau ou de requête');
+            }
+            data = await response.json();
+        } else {
+            data = {
+                data:
+                    USER_ACTIVITY.find((element) => element.userId === parseInt(id, 10))
+            }
         }
-        const data = await response.json();
-
         const formattedSessions = data.data.sessions.map((session, index) => ({
             ...session,
             uniqueDay: index + 1
@@ -69,12 +79,20 @@ export const getUserDataActivity = async (id) => {
 const days = ["L", "M", "M", "J", "V", "S", "D"]
 
 export const getUserDataAverageSessions = async (id) => {
+    let data
     try {
-        const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`);
-        if (!response.ok) {
-            throw new Error('Erreur de réseau ou de requête');
+        if (isProduction) {
+            const response = await fetch(`http://localhost:3000/user/${id}/average-sessions`);
+            if (!response.ok) {
+                throw new Error('Erreur de réseau ou de requête');
+            }
+            data = await response.json();
+        } else {
+            data = {
+                data:
+                    USER_AVERAGE_SESSIONS.find((element) => element.userId === parseInt(id, 10))
+            }
         }
-        const data = await response.json();
         const formattedSessions = data.data.sessions.map((session, index) => ({
             ...session,
             day: days[index]
@@ -105,13 +123,20 @@ export const getUserDataAverageSessions = async (id) => {
 }
 
 export const getUserDataPerformance = async (id) => {
+    let data
     try {
-        const response = await fetch(`http://localhost:3000/user/${id}/performance`);
-        if (!response.ok) {
-            throw new Error('Erreur de réseau ou de requête');
+        if (isProduction) {
+            const response = await fetch(`http://localhost:3000/user/${id}/performance`);
+            if (!response.ok) {
+                throw new Error('Erreur de réseau ou de requête');
+            }
+            data = await response.json();
+        } else {
+            data = {
+                data:
+                    USER_PERFORMANCE.find((element) => element.userId === parseInt(id, 10))
+            }
         }
-        const data = await response.json();
-
         const formattedSessions = data.data.data.map((dataPerf) => ({
             ...dataPerf,
             kind: data.data.kind[dataPerf.kind]
