@@ -10,13 +10,10 @@ const CustomTooltip = ({ active, payload, label }) => {
             <>
                 <div className="custom-tooltip--line-chart">
                     <p className="label">{`${payload[0].value} min`}</p>
-
                 </div>
-
             </>
         );
     }
-
     return null;
 };
 
@@ -54,7 +51,6 @@ export default class SimpleLineChart extends PureComponent {
 
                     <LineChart
                         width={100}
-                        // height={400}
                         data={this.props.data}
                         margin={{
                             top: 0,
@@ -62,6 +58,7 @@ export default class SimpleLineChart extends PureComponent {
                             left: 0,
                             bottom: 15,
                         }}
+                        // Events sur le passage et la sortie de la sourie
                         onMouseMove={this.handleMouseHover}
                         onMouseLeave={() => {
                             this.setState({ startX: null, endX: null, startY: null });
@@ -75,22 +72,21 @@ export default class SimpleLineChart extends PureComponent {
                             </linearGradient>
                         </defs>
 
+                        {/* Texte du graphique */}
                         <text x={30} y={30} fill="#ffffff" opacity={0.5} fontWeight={500} textAnchor="left" dominantBaseline="central" >
                             <tspan x={30} y={30} fontSize="15">Durée moyenne des</tspan>
                             <tspan x={30} y={60} fontSize="15">sessions</tspan>
-
                         </text>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
                         <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} />
                         <YAxis hide={true} domain={['dataMin-20', 'dataMax + 40']} />
 
-
+                        {/* Permet d'afficher le cadre d'assombrissement */}
                         <ReferenceArea
                             x1={startX}
                             x2={endX}
                             ifOverflow='visible'
                             y1={startY}
-                            // y1={-20}
                             fill="rgba(0, 0, 0, 0.2)"
                         />
                         <Tooltip content={<CustomTooltip />} cursor={false} />

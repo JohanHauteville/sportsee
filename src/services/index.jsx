@@ -20,15 +20,12 @@ export const getUserDataInformation = async (id) => {
     let data;
     try {
         if (isProduction) {
-            console.log("En production...")
-
             const response = await fetch(`http://localhost:3000/user/${id}`);
             if (!response.ok) {
                 throw new Error('Erreur de réseau ou de requête');
             }
             data = await response.json();
         } else {
-            console.log("En Developpement...")
             data = {
                 data:
                     USER_MAIN_DATA.find((element) => element.id === parseInt(id, 10))

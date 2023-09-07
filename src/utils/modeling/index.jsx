@@ -3,7 +3,6 @@
 
 export function modelingUserDataInformation(data) {
 
-
     // Formatage des données
     const userDataInfo = {
         ...data.data,
@@ -15,9 +14,6 @@ export function modelingUserDataInformation(data) {
 
         todayScore: data.data.todayScore ? data.data.todayScore : data.data.score,
     }
-
-    const uSFormat = new Intl.NumberFormat('en-US')
-    console.log(uSFormat.format(data.data.keyData.calorieCount));
 
     // Suppresion de "score"
     userDataInfo && delete userDataInfo.score

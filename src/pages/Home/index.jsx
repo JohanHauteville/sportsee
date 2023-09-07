@@ -3,14 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import UserHeader from '../../components/UserHeader';
 import { useState, useEffect } from 'react';
 import { getUserDataInformation, getUserDataActivity, getUserDataAverageSessions, getUserDataPerformance } from '../../services';
+
 import InfoCard from '../../components/InfoCard';
 import SimpleBarChart from '../../components/SimpleBarChart';
 import SimpleLineChart from '../../components/SimpleLineChart'
 import SimpleRadarChart from '../../components/SimpleRadarChart';
 import SimplePieChart from '../../components/SimplePieChart';
-
-
-
 
 import caloriesIcon from '../../assets/icons/calories-icon.svg'
 import proteinesIcon from '../../assets/icons/proteines-icon.svg'
