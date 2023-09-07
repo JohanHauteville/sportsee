@@ -1,10 +1,53 @@
-# Getting Started with Create React App
+![alt text](./src/assets/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Projet React : SportSee - Tableau de bors analytics
+## Description
 
-## Available Scripts
+Ce projet est le douzième de la formation de développeur d'application React de chez OpenCLassrooms.
 
-In the project directory, you can run:
+Dans ce projet on nous demande de lancer la création de la page de profil en partant de maquettes disponibles à cet adresse :
+https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1
+
+En utilisant le Kanban avec les User Stories:
+https://www.notion.so/openclassrooms/Copy-of-Dev4U-projet-Learn-Home-6686aa4b5f44417881a4884c9af5669e
+
+Le BackEnd est disponible ici:
+https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+
+## Outils et Contraintes techniques
+
+### Outils standards
+
+- Create React App
+- React Routeur
+- Styling : au choix CSS ou SASS
+- Utilisation de la librairie Recharts.js pour les graphiques
+
+### Contraintes techniques
+
+#### React:
+
+- Découpage en composants modulaires et réutilisables
+- Un composant par fichier
+- Structure logique des différents fichiers
+- Utilisation des props entre les composants
+- Utilisation du state dans les composants quand c'est nécessaire
+- Gestion des événements
+- Gérer les Call Api en dehors des components
+- Standardiser les données venants de l'API
+
+Il est également recommandé, mais pas imposé, d'utiliser des composants fonctionnels plutôt que des composants classes.
+
+#### React Router:
+
+- Les paramètres des routes sont gérés par React Router 
+- Il existe une page par route
+- La page 404 est renvoyée pour chaque route inexistante, ou si une valeur présente dans l'URL ne fait pas partie des données renseignées.
+- La logique du routeur est réunie dans une seul fichier
+
+## Scripts disponibles
+
+Dans ce projet, vous pouvez lancer:
 
 ### `yarn start`
 
