@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   flex: 1;
-  padding: 7% 0 9% 0;
+  padding: 7% 0 12% 0;
   // gap: 30px;
 
   @media (max-height: 850px) {
@@ -29,15 +29,16 @@
 .section-graph {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 72%;
-  gap: 30px;
+  // gap: 30px;
   height: 100%;
 
   .section-horizontal-graphs {
     display: flex;
     justify-content: space-between;
     height: auto;
-    height: 100%;
+    height: 44%;
     gap: 30px;
   }
 

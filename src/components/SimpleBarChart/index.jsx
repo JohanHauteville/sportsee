@@ -43,7 +43,7 @@ export default class SimpleBarChart extends PureComponent {
                         data={this.props.data}
                         barGap={8}
                         margin={{
-                            top: 60,
+                            top: 80,
                             right: 50,
                             left: 30,
                             bottom: 30,
