@@ -68,16 +68,14 @@ function Home() {
             <UserHeader userData={userDataInformation} />
             <section className="section-principal">
               <section className='section-graph'>
-                {userDataActivity.userId &&
-                  <SimpleBarChart data={userDataActivity.sessions} />}
+                <SimpleBarChart data={userDataActivity.sessions} />
 
-                {userDataAverageSessions && userDataPerformance &&
-                  <div className='section-horizontal-graphs'>
-                    <SimpleLineChart data={userDataAverageSessions.sessions} />
-                    <SimpleRadarChart data={userDataPerformance.performances} />
-                    <SimplePieChart data={userDataInformation} />
-                  </div>
-                }
+                <div className='section-horizontal-graphs'>
+                  <SimpleLineChart data={userDataAverageSessions.sessions} />
+                  <SimpleRadarChart data={userDataPerformance.performances} />
+                  <SimplePieChart data={userDataInformation} />
+                </div>
+
               </section>
               <aside className='section-info-cards'>
                 <InfoCard icon={caloriesIcon} title="Calories" value={userDataInformation.keyData.calorieCount} mesureUnit="kCal" />

@@ -38,8 +38,8 @@ export default class SimpleBarChart extends PureComponent {
                 <ResponsiveContainer width="100%" height="100%" className="bar-chart-section">
 
                     <BarChart
-                        width={200}
-                        height={200}
+                        // width={200}
+                        // height={200}
                         data={this.props.data}
                         barGap={8}
                         margin={{

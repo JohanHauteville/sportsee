@@ -12,7 +12,9 @@
 
 .bar-chart-article {
 
-    height: 50%;
+    // height: auto;
+    // min-height: 0;
+    height: 100%;
     background-color: #00000005;
     border-radius: 10px;
 }

@@ -7,30 +7,64 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="custom-tooltip--line-chart">
-                <p className="label">{`${payload[0].value} min`}</p>
-            </div>
+            <>
+                <div className="custom-tooltip--line-chart">
+                    <p className="label">{`${payload[0].value} min`}</p>
+
+                </div>
+
+            </>
         );
     }
 
     return null;
 };
 
+
+
 export default class SimpleLineChart extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            startX: null,
+            endX: null,
+            startY: null
+        };
+    }
+
+    handleMouseHover = (event) => {
+        const { isTooltipActive } = event
+        const { activeTooltipIndex } = event
+
+        if (isTooltipActive) {
+            this.setState({ startX: activeTooltipIndex, endX: 8, startY: -50 })
+        } else {
+            this.setState({ startX: null, endX: null, startY: null });
+        }
+    };
+
+
     render() {
+        const { startX, endX, startY } = this.state;
+
         return (
             <article className='area-chart-article'>
-                {console.log("SimpleLineChart")}
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer>
+                    {/* <ResponsiveContainer width="100%" height="100%"> */}
+
                     <LineChart
-                        width={500}
-                        height={400}
+                        width={100}
+                        // height={400}
                         data={this.props.data}
                         margin={{
-                            top: 10,
+                            top: 0,
                             right: 0,
                             left: 0,
-                            bottom: 0,
+                            bottom: 15,
+                        }}
+                        onMouseMove={this.handleMouseHover}
+                        onMouseLeave={() => {
+                            this.setState({ startX: null, endX: null, startY: null });
                         }}
                     >
                         {/* Dégradé de la ligne de tracé */}
@@ -48,11 +82,19 @@ export default class SimpleLineChart extends PureComponent {
                         </text>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
                         <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: '1vw', fontWeight: '500', fill: '#fff', opacity: "0.5" }} includeHidden={true} />
-                        <YAxis hide={true} domain={['dataMin-20', 'dataMax + 20']} />
-                        <ReferenceArea x1={150} x2={180} y1={200} y2={300} stroke="black" strokeOpacity={0.3} />
-                        {/* <Tooltip content={<CustomTooltip />} position={{ y: 0 }} /> */}
-                        <Tooltip content={<CustomTooltip />} />
-                        <Line type="natural" dot={false} dataKey="sessionLength" stroke="url(#Gradient01)" fill="#FF0000" strokeWidth={2} />
+                        <YAxis hide={true} domain={['dataMin-20', 'dataMax + 40']} />
+
+
+                        <ReferenceArea
+                            x1={startX}
+                            x2={endX}
+                            ifOverflow='visible'
+                            y1={startY}
+                            // y1={-20}
+                            fill="rgba(0, 0, 0, 0.2)"
+                        />
+                        <Tooltip content={<CustomTooltip />} cursor={false} />
+                        <Line type="natural" dot={false} dataKey="sessionLength" stroke="url(#Gradient01)" fill="#FF0000" strokeWidth={2} legendType='none' activeDot={{ stroke: 'white', strokeWidth: 2, r: 4, fill: 'white' }} />
                     </LineChart>
                 </ResponsiveContainer>
             </article >
