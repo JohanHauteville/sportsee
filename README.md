@@ -1,6 +1,6 @@
 ![alt text](./src/assets/logo.png)
 
-# Projet React : SportSee - Tableau de bors analytics
+# Projet React : SportSee - Tableau de bord analytics
 ## Description
 
 Ce projet est le douzième de la formation de développeur d'application React de chez OpenCLassrooms.
