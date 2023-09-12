@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
             <>
@@ -30,8 +30,7 @@ export default class SimpleLineChart extends PureComponent {
     }
 
     handleMouseHover = (event) => {
-        const { isTooltipActive } = event
-        const { activeTooltipIndex } = event
+        const { isTooltipActive, activeTooltipIndex } = event
 
         if (isTooltipActive) {
             this.setState({ startX: activeTooltipIndex, endX: 8, startY: -50 })

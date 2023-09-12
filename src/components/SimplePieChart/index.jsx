@@ -20,7 +20,6 @@ export default class SimplePieChart extends PureComponent {
                             <tspan x={"50%"} y={"45%"} fontSize="26">{this.props.data.todayScore * 100}%</tspan>
                             <tspan x={"50%"} y={"54%"} fontSize="16" fill='#74798C'>de votre</tspan>
                             <tspan x={"50%"} y={"62%"} fontSize="16" fill='#74798C'>objectif</tspan>
-
                         </text>
                     </PieChart>
                 </ResponsiveContainer>
